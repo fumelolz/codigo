@@ -1,0 +1,5 @@
+<h3>Valor: {{ valor }}</h3> <!-- Interpolación -->
+<label>Paso: <input type="number" [(ngModel)]="paso" /></label> <!-- Two-way -->
+<button (click)="dec()">-</button> <!-- Event -->
+<button (click)="inc()">+</button>
+<div [attr.title]="'Valor actual: ' + valor">Pasa el mouse aquí</div> <!-- Property -->
