@@ -1,0 +1,15 @@
+li { 
+  cursor: pointer; 
+  padding: .25rem .5rem; 
+  border-radius: .5rem;
+} 
+
+.done { 
+  background: #e6ffed; 
+  color: #065f46; 
+}
+
+.pending { 
+  background: #ffe4e6; 
+  color: #9f1239; 
+}

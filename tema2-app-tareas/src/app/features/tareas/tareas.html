@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let t of tareas"
+      [ngClass]="{ 'done': t.done, 'pending': !t.done }" 
+      (click)="toggle(t)">
+    {{ t.texto }}
+  </li>
+</ul>
