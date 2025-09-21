@@ -1,7 +1,29 @@
+<div class="formulario">
+  <input 
+    type="text" 
+    [(ngModel)]="nuevaTarea" 
+    placeholder="Escribe una nueva tarea..."
+    (keyup.enter)="agregarTarea()"
+    class="input-tarea">
+  <button 
+    (click)="agregarTarea()" 
+    [disabled]="!nuevaTarea.trim()"
+    class="btn-agregar">
+    Agregar
+  </button>
+</div>
+
 <ul>
-  <li *ngFor="let t of tareas"
+  <li *ngFor="let t of tareas; let i = index"
       [ngClass]="{ 'done': t.done, 'pending': !t.done }" 
-      (click)="toggle(t)">
-    {{ t.texto }}
+      (click)="toggle(t)"
+      class="tarea-item">
+    <span class="texto-tarea">{{ t.texto }}</span>
+    <button 
+      (click)="eliminarTarea(i); $event.stopPropagation()"
+      class="btn-eliminar"
+      title="Eliminar tarea">
+      ✕
+    </button>
   </li>
 </ul>
