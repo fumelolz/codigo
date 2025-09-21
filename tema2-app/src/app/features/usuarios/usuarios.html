@@ -1,0 +1,7 @@
+<p *ngIf="error">{{error}}</p>
+<table *ngIf="usuarios.length">
+     <tr><th>Nombre</th><th>Email</th></tr>
+     <tr *ngFor="let u of usuarios">
+                <td>{{u.name}}</td><td>{{u.email}}</td>
+         </tr>
+</table>
