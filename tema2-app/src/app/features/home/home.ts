@@ -32,6 +32,11 @@ export class Home {
       name: 'Tareas',
       description: 'Lista de tareas con funcionalidad completa',
       route: '/tareas'
+    },
+    {
+      name: 'Registro',
+      description: 'Formulario de registro con validaciones',
+      route: '/registro'
     }
   ];
 }

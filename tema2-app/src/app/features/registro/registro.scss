@@ -1,0 +1,108 @@
+.registro-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .registro-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 500;
+        color: #555;
+        margin-bottom: 0.25rem;
+        font-size: 0.9rem;
+
+        input {
+          width: 93%;
+          padding: 0.75rem;
+          border: 2px solid #e1e5e9;
+          border-radius: 4px;
+          font-size: 1rem;
+          margin-top: 0.25rem;
+          transition: border-color 0.2s ease;
+
+          &:focus {
+            outline: none;
+            border-color: #007acc;
+          }
+
+          &.ng-invalid.ng-touched {
+            border-color: #dc3545;
+          }
+
+          &.ng-valid.ng-touched {
+            border-color: #28a745;
+          }
+        }
+      }
+
+      .error-messages {
+        margin-top: 0.25rem;
+
+        small {
+          display: block;
+          color: #dc3545;
+          font-size: 0.8rem;
+          margin-top: 0.125rem;
+        }
+      }
+    }
+
+    .submit-btn {
+      padding: 0.75rem;
+      background: #007acc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 0.5rem;
+
+      &:hover:not(:disabled) {
+        background: #005c99;
+      }
+
+      &:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+        opacity: 0.7;
+      }
+    }
+
+    .form-status {
+      text-align: center;
+      margin-top: 0.5rem;
+
+      small {
+        color: #666;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .registro-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
