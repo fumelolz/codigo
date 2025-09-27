@@ -1,7 +1,44 @@
-<p *ngIf="error">{{error}}</p>
-<table *ngIf="usuarios.length">
-     <tr><th>Nombre</th><th>Email</th></tr>
-     <tr *ngFor="let u of usuarios">
-                <td>{{u.name}}</td><td>{{u.email}}</td>
-         </tr>
-</table>
+<div class="usuarios-container">
+  <h2>Gestión de Usuarios</h2>
+  
+  <div *ngIf="error" class="error-message">
+    <p>{{error}}</p>
+  </div>
+
+  <div *ngIf="!usuarios.length && !error" class="loading">
+    <p>Cargando usuarios...</p>
+  </div>
+
+  <div *ngIf="usuarios.length" class="table-container">
+    <div class="table-header">
+      <h3>Lista de Usuarios ({{usuarios.length}} registros)</h3>
+    </div>
+    
+    <table class="usuarios-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Usuario</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th>Sitio Web</th>
+          <th>Ciudad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of usuarios; let i = index" [class.even]="i % 2 === 0">
+          <td>{{u.id}}</td>
+          <td>{{u.name}}</td>
+          <td>{{u.username}}</td>
+          <td>{{u.email}}</td>
+          <td>{{u.phone}}</td>
+          <td>
+            {{u.website}}
+          </td>
+          <td>{{u.address?.city}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

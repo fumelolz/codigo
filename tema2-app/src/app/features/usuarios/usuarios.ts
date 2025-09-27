@@ -11,8 +11,16 @@ import { CommonModule } from '@angular/common';
 export class Usuarios implements OnInit {
   usuarios: any[] = [];
   error = '';
+  selectedUser: any = null;
+  
   constructor(private srv: UsuariosService) { }
+  
   ngOnInit() {
+    this.loadUsuarios();
+  }
+
+  loadUsuarios() {
+    this.error = '';
     this.srv.listar().subscribe({
       next: u => this.usuarios = u,
       error: _ => this.error = 'No se pudo cargar usuarios'
