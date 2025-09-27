@@ -1,0 +1,14 @@
+<div class="contador-container">
+  <h2>Contador Interactivo</h2>
+  <h3>Valor: {{ valor }}</h3> <!-- Interpolación -->
+  
+  <div class="controles">
+    <label>Paso: <input type="number" [(ngModel)]="paso" /></label> <!-- Two-way -->
+    <div class="botones">
+      <button (click)="dec()" class="btn btn-decremento">-</button> <!-- Event -->
+      <button (click)="inc()" class="btn btn-incremento">+</button>
+    </div>
+  </div>
+  
+  <div [attr.title]="'Valor actual: ' + valor" class="tooltip-area">Pasa el mouse aquí</div> <!-- Property -->
+</div>

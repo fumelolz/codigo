@@ -1,0 +1,12 @@
+<div class="home-container">
+
+  <div class="features-grid">
+    <div class="feature-card" *ngFor="let feature of features">
+      <h3>{{ feature.name }}</h3>
+      <p>{{ feature.description }}</p>
+      <a [routerLink]="feature.route" class="feature-link">
+        Ir a {{ feature.name }}
+      </a>
+    </div>
+  </div>
+</div>

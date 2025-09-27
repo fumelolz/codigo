@@ -1,0 +1,86 @@
+.contador-container {
+  display: block;
+  padding: 20px;
+  border: 2px solid #007acc;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+  font-family: Arial, sans-serif;
+
+  h2 {
+    color: #007acc;
+    margin-bottom: 10px;
+    font-size: 1.8em;
+  }
+
+  h3 {
+    color: #007acc;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+  }
+
+  .controles {
+    margin: 20px 0;
+
+    label {
+      display: block;
+      margin: 15px 0;
+      font-weight: bold;
+      color: #333;
+
+      input[type="number"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-left: 10px;
+        width: 80px;
+        text-align: center;
+      }
+    }
+
+    .botones {
+      margin-top: 15px;
+
+      .btn {
+        padding: 10px 20px;
+        margin: 0 10px;
+        border: none;
+        border-radius: 4px;
+        font-size: 1.2em;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &.btn-decremento {
+          background-color: #dc3545;
+          color: white;
+
+          &:hover {
+            background-color: #c82333;
+          }
+        }
+
+        &.btn-incremento {
+          background-color: #28a745;
+          color: white;
+
+          &:hover {
+            background-color: #218838;
+          }
+        }
+      }
+    }
+  }
+
+  .tooltip-area {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    color: #495057;
+    font-style: italic;
+    cursor: help;
+  }
+}
