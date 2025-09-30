@@ -7,15 +7,27 @@
     border-bottom: 1px solid #e5e7eb;
     padding: 1rem;
 
-    h1 {
-      margin: 0 0 1rem 0;
-      color: #333;
-      font-size: 1.5rem;
-      font-weight: 500;
+    .main-nav {
       text-align: center;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #f0f0f0;
+
+      a {
+        text-decoration: none;
+        color: #007acc;
+        font-weight: 500;
+        margin: 0 0.5rem;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #005c99;
+          text-decoration: underline;
+        }
+      }
     }
 
-    .main-nav {
+    .secondary-nav {
       display: flex;
       justify-content: center;
       gap: 1rem;
@@ -28,10 +40,7 @@
         border-radius: 4px;
         font-weight: normal;
         transition: all 0.2s ease;
-
-        .nav-icon {
-          display: none;
-        }
+        font-size: 0.9rem;
 
         &:hover {
           background: #f1f5f9;
@@ -56,11 +65,18 @@
   .app-container {
     header {
       .main-nav {
+        a {
+          display: inline-block;
+          margin: 0.25rem;
+        }
+      }
+
+      .secondary-nav {
         gap: 0.5rem;
 
         .nav-link {
           padding: 0.4rem 0.8rem;
-          font-size: 0.9rem;
+          font-size: 0.8rem;
         }
       }
     }

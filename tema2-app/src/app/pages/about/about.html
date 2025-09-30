@@ -1,0 +1,44 @@
+<div class="page-container">
+  <h1>{{ title }}</h1>
+  <p>{{ description }}</p>
+  
+  <div class="mission-section">
+    <h2>Objetivo Educativo</h2>
+    <p>Demostrar el uso de componentes standalone, servicios, rutas, formularios reactivos y buenas prácticas de Angular en una aplicación completa y funcional.</p>
+  </div>
+
+<div class="about-me-section">
+    <h2>Acerca de mí</h2>
+    <div class="cv-summary">
+        <p><strong>Nombre:</strong> Kevin Daniel Magadán Urcina</p>
+        <p><strong>Perfil:</strong> Desarrollador Full Stack</p>
+        <p><strong>Descripción:</strong> Experiencia en desarrollo web con enfoque en Angular y .Net.</p>
+        <p><strong>Correo:</strong> dany_magadan@hotmail.com</p>
+        <h3>Resumen Profesional</h3>
+        <p>Desarrollador web con 5 años de experiencia, especializado en Angular, .Net, Java y Docker. Experto en metodologías Agile, Clean Code, SOLID y DDD. Capacidad autodidacta y comprensión de proyectos complejos.</p>
+        <h3>Experiencia Laboral</h3>
+        <ul>
+            <li><strong>Operati</strong> (Mar 2025 - Actual) - Desarrollo y mantenimiento de aplicaciones web con ASP.NET Core y Angular, automatización de procesos y APIs RESTful.</li>
+            <li><strong>Oxxo Gasolineras</strong> (May 2024 – Oct 2024) - Desarrollo de componentes personalizados y revisión de código en Angular y .Net.</li>
+            <li><strong>Gnp Seguros</strong> (May 2023 – Abr 2024) - Líder Técnico Senior, supervisión de calidad y orientación técnica.</li>
+            <li><strong>Banco Azteca</strong> (Abr 2022 - Abr 2023) - Desarrollo FrontEnd, implementación de JWT y despliegues en AWS.</li>
+            <li><strong>Gm Robotic</strong> (Sep 2020 - Abr 2022) - Desarrollo de sistemas en Angular y NestJs, implementación de sockets y landing pages.</li>
+            <li><strong>100% Natural</strong> (May 2020 - Sep 2020) - Desarrollo Full Stack de ecommerce con Jquery y PHP.</li>
+        </ul>
+        <h3>Conocimientos</h3>
+        <p><strong>Lenguajes:</strong> Javascript, TypeScript, PHP, C#, Java, Python</p>
+        <p><strong>Bases de datos:</strong> MySQL, SQL Server</p>
+        <p><strong>Metodologías:</strong> Agile, Clean Code, SOLID, DDD</p>
+    </div>
+</div>
+
+  <div class="team-section">
+    <h2>Tecnologías Utilizadas</h2>
+    <div class="team-grid">
+      <div class="team-member" *ngFor="let tech of technologies">
+        <h3>{{ tech.name }}</h3>
+        <p>{{ tech.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -11,8 +11,6 @@ import { CommonModule } from '@angular/common';
 export class Usuarios implements OnInit {
   usuarios: any[] = [];
   error = '';
-  selectedUser: any = null;
-  
   constructor(private srv: UsuariosService) { }
   
   ngOnInit() {

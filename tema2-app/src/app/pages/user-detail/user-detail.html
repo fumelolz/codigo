@@ -1,0 +1,37 @@
+<div class="page-container">
+  <h1>{{ title }}</h1>
+  
+  <div class="user-info" *ngIf="id">
+    <div class="user-card">
+      <h2>Usuario ID: {{ id }}</h2>
+      <p>Esta es la página de detalles para el usuario con ID <strong>{{ id }}</strong></p>
+      
+      <div class="mock-data">
+        <h3>Información del Usuario</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <strong>ID:</strong> {{ id }}
+          </div>
+          <div class="info-item">
+            <strong>Nombre:</strong> Usuario {{ id }}
+          </div>
+          <div class="info-item">
+            <strong>Email:</strong> usuario{{ id }}@ejemplo.com
+          </div>
+          <div class="info-item">
+            <strong>Estado:</strong> Activo
+          </div>
+        </div>
+      </div>
+      
+      <div class="actions">
+        <button class="btn-primary" onclick="history.back()">← Volver</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="error-message" *ngIf="!id">
+    <h2>Error</h2>
+    <p>No se pudo obtener el ID del usuario desde la URL.</p>
+  </div>
+</div>

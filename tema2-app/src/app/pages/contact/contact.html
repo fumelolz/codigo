@@ -1,0 +1,58 @@
+<div class="page-container">
+  <h1>{{ title }}</h1>
+  <p>Proyecto educativo de Angular - Tema 2</p>
+  
+  <div class="contact-content">
+    <div class="contact-info">
+      <h2>Conceptos Demostrados</h2>
+      <div class="info-item">
+        <strong>Rutas:</strong> Navegación y parámetros
+      </div>
+      <div class="info-item">
+        <strong>Formularios:</strong> Reactivos y template-driven
+      </div>
+      <div class="info-item">
+        <strong>HTTP:</strong> Consumo de APIs reales
+      </div>
+      <div class="info-item">
+        <strong>Componentes:</strong> Standalone y reutilizables
+      </div>
+    </div>
+
+    <form class="contact-form" (ngSubmit)="onSubmit()">
+      <h2>Feedback del Proyecto</h2>
+      
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input 
+          type="text" 
+          id="name" 
+          [(ngModel)]="contactForm.name" 
+          name="name"
+          placeholder="Tu nombre">
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input 
+          type="email" 
+          id="email" 
+          [(ngModel)]="contactForm.email" 
+          name="email"
+          placeholder="tu@email.com">
+      </div>
+      
+      <div class="form-group">
+        <label for="feedback">Comentarios sobre el proyecto:</label>
+        <textarea 
+          id="feedback" 
+          [(ngModel)]="contactForm.feedback" 
+          name="feedback"
+          rows="4"
+          placeholder="¿Qué te pareció el proyecto?"></textarea>
+      </div>
+      
+      <button type="submit" class="submit-btn">Enviar Feedback</button>
+    </form>
+  </div>
+</div>
