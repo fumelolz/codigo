@@ -1,0 +1,50 @@
+<div class="task-item" [class.completed]="task.completed">
+  <div class="task-checkbox">
+    <input 
+      type="checkbox" 
+      [checked]="task.completed"
+      (change)="onToggleComplete()"
+      [id]="'task-' + task.id"
+    >
+    <label [for]="'task-' + task.id"></label>
+  </div>
+  
+  <div class="task-content">
+    <h3 class="task-title">{{ task.title }}</h3>
+    <p class="task-description" *ngIf="task.description">{{ task.description }}</p>
+    
+    <div class="task-meta">
+      <span class="task-priority" [class]="'priority-' + task.priority">
+        {{ getPriorityLabel(task.priority) }}
+      </span>
+      
+      <span class="task-date" *ngIf="task.dueDate">
+        Vence: {{ task.dueDate | date:'dd/MM/yyyy' }}
+      </span>
+      
+      <span class="task-created">
+        Creado: {{ task.createdAt | date:'dd/MM/yyyy' }}
+      </span>
+    </div>
+  </div>
+  
+  <div class="task-actions">
+    <button 
+      class="btn-edit" 
+      (click)="onEdit()"
+      title="Editar tarea"
+      style="color: #007bff;"
+    >
+      Editar
+    </button>
+    
+    <button 
+      class="btn-delete" 
+      (click)="onDelete()"
+      title="Eliminar tarea"
+      style="color: #dc3545;"
+    >
+      Eliminar
+    </button>
+  </div>
+</div>

@@ -1,0 +1,198 @@
+<div class="tasks-container">
+  <!-- Header -->
+  <header class="tasks-header">
+    <div class="header-content">
+      <h1>Gestión de Tareas</h1>
+      <div class="header-actions">
+        <span class="user-welcome" *ngIf="currentUser">
+          Bienvenido, {{ currentUser.name }}
+        </span>
+        <button class="btn-profile" routerLink="/profile">
+          Perfil
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Task Creation Form -->
+  <div class="task-form-section">
+    <button 
+      class="btn-toggle-form" 
+      (click)="showTaskForm = !showTaskForm"
+    >
+      {{ showTaskForm ? 'Ocultar formulario' : 'Agregar tarea' }}
+    </button>
+
+    <div class="task-form" *ngIf="showTaskForm">
+      <h2>Crear Nueva Tarea</h2>
+      <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="title">Título *</label>
+            <input 
+              type="text" 
+              id="title" 
+              formControlName="title"
+              [class.error]="taskForm.get('title')?.invalid && taskForm.get('title')?.touched"
+              placeholder="Ingresa el título de la tarea"
+            >
+            <div class="error-message" *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched">
+              El título es requerido
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="priority">Prioridad</label>
+            <select id="priority" formControlName="priority">
+              <option value="low">Baja</option>
+              <option value="medium">Media</option>
+              <option value="high">Alta</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Descripción</label>
+          <textarea 
+            id="description" 
+            formControlName="description"
+            rows="3"
+            placeholder="Descripción opcional de la tarea"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="dueDate">Fecha de vencimiento</label>
+          <input 
+            type="date" 
+            id="dueDate" 
+            formControlName="dueDate"
+          >
+        </div>
+
+        <div class="form-actions">
+          <button 
+            type="submit" 
+            class="btn-primary"
+            [disabled]="taskForm.invalid || isCreating"
+          >
+            {{ isCreating ? 'Creando...' : 'Crear Tarea' }}
+          </button>
+          <button 
+            type="button" 
+            class="btn-secondary"
+            (click)="resetForm()"
+          >
+            Limpiar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Task Filters -->
+  <div class="task-filters">
+    <button 
+      class="filter-btn" 
+      [class.active]="currentFilter === 'all'"
+      (click)="setFilter('all')"
+    >
+      Todas ({{ (allTasks$ | async)?.length || 0 }})
+    </button>
+    <button 
+      class="filter-btn" 
+      [class.active]="currentFilter === 'active'"
+      (click)="setFilter('active')"
+    >
+      Activas ({{ (activeTasks$ | async)?.length || 0 }})
+    </button>
+    <button 
+      class="filter-btn" 
+      [class.active]="currentFilter === 'completed'"
+      (click)="setFilter('completed')"
+    >
+      Completadas ({{ (completedTasks$ | async)?.length || 0 }})
+    </button>
+  </div>
+
+  <!-- Task List -->
+  <div class="task-list">
+    <div *ngIf="(currentTasks$ | async)?.length === 0" class="empty-state">
+      <h3>No hay tareas para mostrar</h3>
+      <p>{{ getEmptyStateMessage() }}</p>
+    </div>
+
+    <div *ngFor="let task of (currentTasks$ | async)" class="task-wrapper">
+      <app-task-item
+        [task]="task"
+        (toggleComplete)="onToggleComplete($event)"
+        (edit)="onEditTask($event)"
+        (delete)="onDeleteTask($event)"
+      ></app-task-item>
+    </div>
+  </div>
+
+  <!-- Edit Task Modal -->
+  <div class="modal" *ngIf="editingTask" (click)="onModalBackdropClick($event)">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <h2>Editar Tarea</h2>
+      <form [formGroup]="editForm" (ngSubmit)="onEditSubmit()">
+        <div class="form-group">
+          <label for="editTitle">Título *</label>
+          <input 
+            type="text" 
+            id="editTitle" 
+            formControlName="title"
+            [class.error]="editForm.get('title')?.invalid && editForm.get('title')?.touched"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="editDescription">Descripción</label>
+          <textarea 
+            id="editDescription" 
+            formControlName="description"
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="editPriority">Prioridad</label>
+            <select id="editPriority" formControlName="priority">
+              <option value="low">Baja</option>
+              <option value="medium">Media</option>
+              <option value="high">Alta</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="editDueDate">Fecha de vencimiento</label>
+            <input 
+              type="date" 
+              id="editDueDate" 
+              formControlName="dueDate"
+            >
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button 
+            type="submit" 
+            class="btn-primary"
+            [disabled]="editForm.invalid || isUpdating"
+          >
+            {{ isUpdating ? 'Guardando...' : 'Guardar Cambios' }}
+          </button>
+          <button 
+            type="button" 
+            class="btn-secondary"
+            (click)="cancelEdit()"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

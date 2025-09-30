@@ -1,0 +1,50 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h1>Iniciar Sesión</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          formControlName="email"
+          [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+        >
+        <div class="error-message" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          <span *ngIf="loginForm.get('email')?.errors?.['required']">El email es requerido</span>
+          <span *ngIf="loginForm.get('email')?.errors?.['email']">Ingrese un email válido</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input 
+          type="password" 
+          id="password" 
+          formControlName="password"
+          [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+        >
+        <div class="error-message" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          <span *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida</span>
+        </div>
+      </div>
+
+      <button 
+        type="submit" 
+        class="btn-primary"
+        [disabled]="loginForm.invalid || isLoading"
+      >
+        <span *ngIf="isLoading">Ingresando...</span>
+        <span *ngIf="!isLoading">Ingresar</span>
+      </button>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="auth-links">
+      <p>¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a></p>
+    </div>
+  </div>
+</div>
